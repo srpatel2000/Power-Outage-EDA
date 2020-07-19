@@ -62,7 +62,7 @@ We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.
 
 ## Section 2: Prediction Model
 For this section, we choose to predict the cause of the major outages as our prediction question. 
-    -  Target Variable: CAUSE.CATEGORY 
+* Target Variable: CAUSE.CATEGORY 
     
 We measured the performance of our classifcation model using the accuracy evalution metric.
 
