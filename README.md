@@ -1,11 +1,9 @@
 # Power-Outage-EDA
 
-
-## Summary of Findings
 ### Introduction
 The 'outage.xlsx' dataset represents inputs about major outages in different states of the United States from 2000 to 2016. The topics of the columns are: general information, regional climate information, outage events information, regional electricity consumption information, regional economic characteristics, and regional land-use characteristics. A more detailed description of the separate columns can be found at: https://www.sciencedirect.com/science/article/pii/S2352340918307182.
 
-In this project, we perform exploratory data analysis in order to perform some sort of hypothesis test. In order to develop a hypothesis, we narrowed down what we were exploring to a few possible questions and inquiries. These include:
+In this project, we perform exploratory data analysis in order to perform of hypothesis test. In order to develop a hypothesis, we narrowed down what we were exploring to a few possible questions and inquiries. These include:
 
 - Where and when do major power outages tend to occur?
 - What characteristics are associated with each category of cause?
@@ -13,14 +11,10 @@ In this project, we perform exploratory data analysis in order to perform some s
 
 Below we will be providing a summary of what we accomplished in the different sections of this notebook.
 
-### Cleaning and EDA
-First, we had to clean our given dataset. When we first imported the set, the columns were not the correct names and the rows did not correctly represent the data generating process (DGP). In order to fix this, we obtained the relevant header names (which were located on row four), and made the column names equal to them. We also dropped the irrelevant 'variables' column that originally showed up because it did not matter in our analysis. Lastly, we set the observations equal to the index in order to more quickly find data.
 
-After reformatting the table to more correctly reflect the DGP, we combined the start date and time in order to create a summarized datetime column. We did the same for the end date and time in order to be uniform. We added these two columns to the dataframe in order to encompass a more precise dataset.
 
-We also reformatted the dtypes of the columns that did not contain null values. This was in order to ensure that the DGP was accurate and so that future analysis would run smoother.
-
-We then began our exploratory data analysis (EDA). In the EDA we focused on the above questions by creating graphs. More specifically, we performed univariate, bivariate, and aggregation analysis.
+### EDA
+In the EDA we focused on the above questions by creating graphs. More specifically, we performed univariate, bivariate, and aggregation analysis.
 
 When performing univariate analysis, we mainly focused on finding where and when major power outages occur. We found that the main cause of power outages between 2000 and 2016 is severe weather followed by intentional attacks. We also found that most outages occur in states with higher populations. This may be due to the fact that states with a higher population tend to have more power plants, and therefore would be prone to having more outages. Going off of this fact, we found that the region that takes the most impact is the northeast region of the U.S. This would be fitting considering that many of these states (e.g. New York) have a high population density.
 
