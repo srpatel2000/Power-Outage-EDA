@@ -21,21 +21,21 @@ In the EDA we focused on the above questions by creating graphs. More specifical
 #### Univariate 
 When performing univariate analysis, we focused on finding where and when major power outages occur. 
 
-Bar graph: Distribution of Outage Causes
-Cloropeth: Distribution of Outages Over States (Postal Codes)
-Pie Chart: Distribution of Outages Over Climate Regions
+* Bar graph: Distribution of Outage Causes
+* Cloropeth: Distribution of Outages Over States (Postal Codes)
+* Pie Chart: Distribution of Outages Over Climate Regions
 
 #### Bivariate 
 After visualizing this data, we wanted to analyze the relationship between the causes of outages and the other specific features. In our bivariate analysis we focused on how different outage causes affected rural versus urban populations. 
 
-Bar graph: Distribution of Power Outages Over Time
-Spaghetti plot: Change of number of outages per cause over time 
-Box Plot: Distribution of Causes in Rural and Urbal Areas
+* Bar graph: Distribution of Power Outages Over Time
+* Spaghetti plot: Change of number of outages per cause over time 
+* Box Plot: Distribution of Causes in Rural and Urbal Areas
 
 #### Aggregation
 We also did some aggregation analysis be checking how many overall customers were affected by a specific cause. We did this in order to try to see why certain causes may affect rural areas more often.
 
-Bar graph: Distribution of Number of Customers Affected by Specific Cause Category Detail
+* Bar graph: Distribution of Number of Customers Affected by Specific Cause Category Detail
 
 More fun visualizations we generated while investigating our questions are included in the notebook.
 
