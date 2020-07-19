@@ -54,7 +54,7 @@ From our EDA, we recognized that rural areas had a higher rate or outages relate
 
 Our question: Are rural areas more prone to severe weather outages than urban areas? 
 
-** Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
+* Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
 * Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
 Test statistic: Difference in median outages for both urban and rural population density
 
