@@ -63,13 +63,21 @@ We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.
 ## Section 2: Prediction Model
 For this section, we choose to predict the cause of the major outages as our prediction question. 
     -  Target Variable: CAUSE.CATEGORY 
+    
+We measured the performance of our classifcation model using the accuracy evalution metric.
 
 ### Baseline Model
 For the baseline model, we choose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
 
+* The number of features, including how many are quantitative, ordinal, and nominal.
+
 Baseline Pipeline:
 - Preprocessed The Data: Simple Imputer and One Hot Encoder
 - Classifer: Decision Tree Classifier.
+
+Evalution Metrics:
+- Test Accuracy: 0.729
+- Validation Accuracy: 0.721
 
 ### Engineer New Features
 We decided to engineer six more features to improve our model. 
@@ -86,9 +94,20 @@ In addition to adding the new features to our dataset, we incoporated the Princi
 ### Model and Parameter Testing
 After engineering the features, we decided to compare various classifiers which will optimize our prediction model. We also optimized our parameters using Grid Search CV.
 
-- Decision Tree Classifier (Baseline Model)
+- Decision Tree Classifier 
   - Test Accuracy: 0.718
   - Validation Accuracy: 0.7399
-- Random Forest 
-  - 
-After testing Decision Tree, Random Forest, and KNN classifiers, we found Decision Tree performed the best about optimizing the parameters. In addition, we add PCA to our pipeline to handle our highly correlated columns.
+- Decision Tree Classifier with Best Parameters
+  - Test Accuracy: 0.748
+  - Validation Accuracy: 0.746
+- Random Forest Classifier
+  - Test Accuracy: 0.77
+  - Validation Accuracy: 0.750
+- Random Forest Classfier with Best Parameters
+  - Test Accuracy: 0.783
+  - Validation Accuracy: 0.748
+- KNN Classifier
+  - Test Accuracy: 0.752
+  - Validation Accuracy: 0.7399
+
+From the given evaluation metrics, the Random Forest Classifier seems to be perform slightly better than the previous Decision Tree Classifier.
