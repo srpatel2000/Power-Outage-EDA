@@ -44,8 +44,8 @@ More fun visualizations we generated while investigating our questions are inclu
 ### Assessment of Missingness
 Hypothesis for MAR Permutation Tests:
 
-##### Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
-##### Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
+#### Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
+#### Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
 
 After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at leave one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
 
@@ -54,8 +54,8 @@ From our EDA, we recognized that rural areas had a higher rate or outages relate
 
 Our question: Are rural areas more prone to severe weather outages than urban areas? 
 
-##### Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
-##### Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
+#### Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
+#### Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
 Test statistic: Difference in median outages for both urban and rural population density
 
 We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we came to the conclusion that we can reject the null hypothesis. In our data set we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that result in this difference.
@@ -82,12 +82,12 @@ Evalution Metrics:
 ### Engineer New Features
 We decided to engineer six more features to improve our model. 
 
-(1) Day of the week the outage occured (START.DAY.OF.WEEK)
-(2) Day of the week the outage Was restored (RESTORATION.DAY.OF.WEEK)
-(3) Hour an outage occured (START.HOUR)
-(4) Hour the outage was restored (RESTORATION.HOUR)
-(5) Number of Days Outage Occured (TOTAL.DAYS)
-(6) State's population is more rural or urban dominated (IS.URBAN)
+* Day of the week the outage occured (START.DAY.OF.WEEK)
+* Day of the week the outage Was restored (RESTORATION.DAY.OF.WEEK)
+* Hour an outage occured (START.HOUR)
+* Hour the outage was restored (RESTORATION.HOUR)
+* Number of Days Outage Occured (TOTAL.DAYS)
+* State's population is more rural or urban dominated (IS.URBAN)
 
 In addition to adding the new features to our dataset, we incoporated the Principal Component Analysis (PCA) to our preprocessing pipeline in order to handle highly correlated columns.
 
