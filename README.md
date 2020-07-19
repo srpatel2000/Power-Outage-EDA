@@ -68,10 +68,10 @@ For this section, we choose to predict the cause of the major outages as our pre
 For the baseline model, we choose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
 
 Baseline Pipeline:
-  (1) Preprocessed The Data:
+    - Preprocessed The Data:
         - Simple Imputer
         - One Hot Encoder
-  (2) Classifer: Decision Tree Classifier.
+    - Classifer: Decision Tree Classifier.
 
 ### Engineer New Features
 We decided to engineer six more features to improve our model. 
