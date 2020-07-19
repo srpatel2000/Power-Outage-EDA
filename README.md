@@ -69,8 +69,8 @@ For the baseline model, we choose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 
 
 Baseline Pipeline:
   (1) Preprocessed The Data:
-    - Simple Imputer
-    - One Hot Encoder
+        - Simple Imputer
+        - One Hot Encoder
   (2) Classifer: Decision Tree Classifier.
 
 ### Engineer New Features
