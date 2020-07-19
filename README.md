@@ -1,9 +1,13 @@
 # Power-Outage-EDA
 
-### Introduction
+## Introduction
 The 'outage.xlsx' dataset represents inputs about major outages in different states of the United States from 2000 to 2016. The topics of the columns are: general information, regional climate information, outage events information, regional electricity consumption information, regional economic characteristics, and regional land-use characteristics. A more detailed description of the separate columns can be found at: https://www.sciencedirect.com/science/article/pii/S2352340918307182.
 
-In this project, we perform exploratory data analysis in order to perform of hypothesis test. In order to develop a hypothesis, we narrowed down what we were exploring to a few possible questions and inquiries. These include:
+We divided the project into two sections: Hypothesis Test and Prediction Model
+
+In this project, we perform exploratory data analysis in order to develop a hypothesis to test and decide on the metrics to train our prediction model.
+
+We narrowed down what we were exploring to a few possible questions and inquiries. These include:
 
 - Where and when do major power outages tend to occur?
 - What characteristics are associated with each category of cause?
@@ -11,38 +15,82 @@ In this project, we perform exploratory data analysis in order to perform of hyp
 
 Below we will be providing a summary of what we accomplished in the different sections of this notebook.
 
-
-
 ### EDA
 In the EDA we focused on the above questions by creating graphs. More specifically, we performed univariate, bivariate, and aggregation analysis.
 
 #### Univariate 
-When performing univariate analysis, we focused on finding where and when major power outages occur. We found that the main cause of power outages between 2000 and 2016 is severe weather followed by intentional attacks. We also found that most outages occur in states with higher populations. This may be due to the fact that states with a higher population tend to have more power plants, and therefore would be prone to having more outages. Going off of this fact, we found that the region that takes the most impact is the northeast region of the U.S. This would be fitting considering that many of these states (e.g. New York) have a high population density.
+When performing univariate analysis, we focused on finding where and when major power outages occur. 
+
+Bar graph: Distribution of Outage Causes
+Cloropeth: Distribution of Outages Over States (Postal Codes)
+Pie Chart: Distribution of Outages Over Climate Regions
 
 #### Bivariate 
-After visualizing this data, we knew we wanted to bring in the causes of the outages into our analysis. In our bivariate analysis we focused on how different outage causes affected rural versus urban populations. We created a spaghetti plot to see how the counts of different causes fluctuated by year. We noticed that severe weather was the main cause of outages up until 2011. Not only were there 269 overall outages this year, but intentional attacks took over as the biggest cause of outages. Upon doing research we can attribute the large amount of power outages to the 2011 Southwest Blackout Event. The outage was the result of 23 distinct events that occurred on 5 separate power grids in a span of 11 minutes. More information can be found here: https://www.nerc.com/pa/rrm/ea/Pages/September-2011-Southwest-Blackout-Event.aspx. This led us to wonder: how differently are urban versus rural areas affected by outages caused by intential attacks? We plotted a boxplot that conveyed how differently urban versus rural areas were affected by different causes. Although we found that intential attacks affected them at the same rate, severe weather did not. So this led us to our hypothesis testing question: Are rural areas more prone to severe weather outages than urban areas? More information is in the Hypothesis Test Question of this summary.
+After visualizing this data, we wanted to analyze the relationship between the causes of outages and the other specific features. In our bivariate analysis we focused on how different outage causes affected rural versus urban populations. 
+
+Bar graph: Distribution of Power Outages Over Time
+Spaghetti plot: Change of number of outages per cause over time 
+Box Plot: Distribution of Causes in Rural and Urbal Areas
 
 #### Aggregation
 We also did some aggregation analysis be checking how many overall customers were affected by a specific cause. We did this in order to try to see why certain causes may affect rural areas more often.
 
-We split up the graphs that relate to our newly found hypothesis test and other fun visualizations we did while investigating our questions. We won't go into much detail about the findings in those, however we plan on utilizing those graphs for further analysis in the future so you can go ahead and take a look at them yourself.
+Bar graph: Distribution of Number of Customers Affected by Specific Cause Category Detail
+
+More fun visualizations we generated while investigating our questions are included in the notebook.
+
+## Section 1: Hypothesis Test
 
 ### Assessment of Missingness
 Hypothesis for MAR Permutation Tests:
 
-Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
-Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
-For our analysis of the missingness of our dataset, we believe that our data is not NMAR (not missing at random). NMAR classification is given to data if the missingness of the missingness of a column can be credited to that is not given within the dataset. In order to determine whether or not our dataset contain NMAR data, we conducted permutation tests on all columns within the dataset that contained missing data. Every permutation tests on all non trivial missingness columns seems to have at leave one simulation that returned a p value less than 0.05 which allowed us to reject the null hypothesis.
+##### Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
+##### Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
 
-The column with nontrivial missingness data that we chose to analyze was 'OUTAGE.DURATION'. This column has 1476 non-null values out of the 1534 possible data entries. In order to determine 'OUTAGE.DURATION''s dependency of missingness, we conducted a KS-Statistic permutation test. The KS test is used to identify whether the two distributions are from the same continuous distribution. Using the KS statistic test, we were able to create two samples of data (one which contains the distribution of a column where OUTAGE.DURATION is null and the other which contains the distribution of a column where OUTAGE.DURATION is not null). After generating multiple sample through the 1000 simulations, we compared to our observed statistic which was the ks_2samp of our initial two independent samples. The results of the permutation test, along with a significance level of 0.05, showed that 'TOTAL.SALES' was able to reject null hypothesis with a p value of 0.0 and 'CUSTOMERS.AFFECTED' failed to reject the null hypothesis with a p value of 0.28. Rejecting the null hypothesis indicates that the distribution are not similar. Failing to reject the null hypothesis indicates that the distribution is similar. This result does make sense as there are many factors other than outage duration that will affect the missingness of customers affected. However, outage duration can directly affects the total sales which indicates total electricity consumption in the U.S. state.
+After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at leave one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
 
 ### Hypothesis Test
-As stated above our question was: Are rural areas more prone to severe weather outages than urban areas? We came up with this questions because we observed that rural areas had a higher rate or outages related to weather compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters.
+From our EDA, we recognized that rural areas had a higher rate or outages related to weather compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters. 
 
-When testing this we maintained these hypotheses:
+Our question: Are rural areas more prone to severe weather outages than urban areas? 
 
-Null: There is no difference in the amount that severe weather affects rural vs urban populations.
-Alternative: There is a difference in the amount that severe weather affects rural vs urban populations. (However, we don't know why though)
-We used the difference in medians between the two populations.
+##### Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
+##### Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
+Test statistic: Difference in median outages for both urban and rural population density
 
-We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we came to the conclusion that we can reject the null. In our data set we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations.
+We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we came to the conclusion that we can reject the null hypothesis. In our data set we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that result in this difference.
+
+## Section 2: Prediction Model
+For this section, we choose to predict the cause of the major outages as our prediction question. 
+    -  Target Variable: CAUSE.CATEGORY 
+
+### Baseline Model
+For the baseline model, we choose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
+
+Baseline Pipeline:
+  (1) Preprocessed The Data:
+    - Simple Imputer
+    - One Hot Encoder
+  (2) Classifer: Decision Tree Classifier.
+
+### Engineer New Features
+We decided to engineer six more features to improve our model. 
+
+(1) Day of the week the outage occured (START.DAY.OF.WEEK)
+(2) Day of the week the outage Was restored (RESTORATION.DAY.OF.WEEK)
+(3) Hour an outage occured (START.HOUR)
+(4) Hour the outage was restored (RESTORATION.HOUR)
+(5) Number of Days Outage Occured (TOTAL.DAYS)
+(6) State's population is more rural or urban dominated (IS.URBAN)
+
+In addition to adding the new features to our dataset, we incoporated the Principal Component Analysis (PCA) to our preprocessing pipeline in order to handle highly correlated columns.
+
+### Model and Parameter Testing
+After engineering the features, we decided to compare various classifiers which will optimize our prediction model. We also optimized our parameters using Grid Search CV.
+
+- Decision Tree Classifier (Baseline Model)
+  - Test Accuracy: 0.718
+  - Validation Accuracy: 0.7399
+- Random Forest 
+  - 
+After testing Decision Tree, Random Forest, and KNN classifiers, we found Decision Tree performed the best about optimizing the parameters. In addition, we add PCA to our pipeline to handle our highly correlated columns.
