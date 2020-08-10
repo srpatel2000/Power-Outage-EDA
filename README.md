@@ -5,7 +5,7 @@ The 'outage.xlsx' dataset represents inputs about major outages in different sta
 
 We divided the project into two sections: Hypothesis Test and Prediction Model
 
-In this project, we perform exploratory data analysis in order to develop a hypothesis to test and decide on the metrics to train our prediction model.
+In this project, we performed exploratory data analysis in order to develop a hypothesis to test and decide on the metrics to train our prediction model.
 
 We narrowed down what we were exploring to a few possible questions and inquiries. These include:
 
@@ -16,7 +16,7 @@ We narrowed down what we were exploring to a few possible questions and inquirie
 Below we will be providing a summary of what we accomplished in the different sections of this notebook.
 
 ### EDA
-In the EDA we focused on the above questions by creating graphs. More specifically, we performed univariate, bivariate, and aggregation analysis.
+In the EDA, guided the above questions, we focused on analyzing the relationship between specific features in our dataset. More specifically, we performed univariate, bivariate, and aggregation analysis.
 
 #### Univariate 
 When performing univariate analysis, we focused on finding where and when major power outages occur. 
@@ -33,7 +33,7 @@ After visualizing this data, we wanted to analyze the relationship between the c
 * Box Plot: Distribution of Causes in Rural and Urbal Areas
 
 #### Aggregation
-We also did some aggregation analysis be checking how many overall customers were affected by a specific cause. We did this in order to try to see why certain causes may affect rural areas more often.
+We also utilized aggregation analysis by observing how many overall customers were affected by a specific cause. We did this in order to see why certain causes may affect rural areas more often.
 
 * Bar graph: Distribution of Number of Customers Affected by Specific Cause Category Detail
 
@@ -47,7 +47,7 @@ Hypothesis for MAR Permutation Tests:
 * Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
 * Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
 
-After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at leave one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
+After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at least one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
 
 ### Hypothesis Test
 From our EDA, we recognized that rural areas had a higher rate or outages related to weather compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters. 
@@ -58,18 +58,22 @@ Our question: Are rural areas more prone to severe weather outages than urban ar
 * Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
 Test statistic: Difference in median outages for both urban and rural population density
 
-We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we came to the conclusion that we can reject the null hypothesis. In our data set we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that result in this difference.
+Results: We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we concluded that we can reject the null hypothesis. In our dataset, we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that resulted in this difference.
 
 ## Section 2: Prediction Model
-For this section, we choose to predict the cause of the major outages as our prediction question. 
+For this section, we chose to predict the cause of the major outages as our prediction question. 
 * Target Variable: CAUSE.CATEGORY 
     
-We measured the performance of our classifcation model using the accuracy evalution metric.
+We measured and compared the performance of our classifcation models using the accuracy evalution metric.
 
 ### Baseline Model
-For the baseline model, we choose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
+For the baseline model, we chose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
 
-* The number of features, including how many are quantitative, ordinal, and nominal.
+Overview of our Selected Dataset:
+* Year (ordinal)
+* Postal Code (nominal)
+* Customers Affected (quantitative)
+* Poppct Urban or Population Percentage Urban (quantitative)
 
 Baseline Pipeline:
 - Preprocessed The Data: Simple Imputer and One Hot Encoder
@@ -110,4 +114,4 @@ After engineering the features, we decided to compare various classifiers which 
   - Test Accuracy: 0.752
   - Validation Accuracy: 0.7399
 
-From the given evaluation metrics, the Random Forest Classifier seems to be perform slightly better than the previous Decision Tree Classifier.
+From the given evaluation metrics, the Random Forest Classifier seems to be performing slightly better than the previous Decision Tree Classifier.
