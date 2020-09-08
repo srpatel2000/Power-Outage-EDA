@@ -132,7 +132,7 @@ The accuracy increased 6 percent and the validation accuracy has increased by 3 
 For the fairness evaluation, we chose to evaluate whether the model performed better when a larger group of customers was affected. We chose to do an accuracy parity evaluation since we had a multiclass classification model and found that accuracy was one of the easier ways to evaluate model fairness.
 
 In order to perform this evaluation we performed a permutation test, at a significance level of 0.05, with these hypotheses:
-Null hypothesis: The classifications of major power outages are "the same" when a small and large number of people are affected.
-Alternative hypothesis: The classifications of major power outages are NOT "the same" when a small and large number of people are affected.
+* Null hypothesis: The classifications of major power outages are "the same" when a small and large number of people are affected.
+* Alternative hypothesis: The classifications of major power outages are NOT "the same" when a small and large number of people are affected.
 
 Since we got a p-value of 1.0, we can strongly fail to reject the null hypothesis. Therefore, the classifications of major power outages are "the same" when both small and large number of people are affected.
