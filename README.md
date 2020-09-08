@@ -16,7 +16,7 @@ We narrowed down what we were exploring to a few possible questions and inquirie
 - What characteristics are associated with each category of cause?
 - How have characteristics of major power outages changed over time? Is there a clear trend?
 
-In the EDA, guided the above questions, we focused on analyzing the relationship between specific features in our dataset. More specifically, we performed univariate, bivariate, and aggregation analysis.
+Guided by the question above, we focused on analyzing the relationship between specific features in our dataset. More specifically, we performed univariate, bivariate, and aggregation analysis.
 
 #### Univariate 
 When performing univariate analysis, we focused on finding where and when major power outages occur. 
@@ -45,7 +45,7 @@ More fun visualizations we generated while investigating our questions are inclu
 Hypothesis for MAR Permutation Tests:
 
 * Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
-* Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compated column data.
+* Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compared column data.
 
 After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at least one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
 
@@ -56,24 +56,24 @@ Our question: Are rural areas more prone to severe weather outages than urban ar
 
 * Null Hypothesis: There is no difference in the amount that severe weather affects rural vs urban populations.
 * Alternative Hypothesis: There is a difference in the amount that severe weather affects rural vs urban populations. 
-Test statistic: Difference in median outages for both urban and rural population density
+* Test statistic: Difference in median outages for both urban and rural population density
 
-Results: We performed 10,000 trials and with a p-value of 0.0 and a significance level 0.05, we concluded that we can reject the null hypothesis. In our dataset, we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that resulted in this difference.
+Results: We performed 10,000 trials at a significance level 0.05. After receiving a p-value of 0.0, we concluded that we can reject the null hypothesis. In our dataset, we can conclude that there is a statistically significant difference in the amount that severe weather affects rural vs urban populations; however, we are unable to determine the specific factors that resulted in this difference.
 
 ## Section 2: Prediction Model
-For this section, we chose to predict the cause of the major outages as our prediction question. 
+For this section, we chose to build a prediction model that can predict the cause of the major outages, using the discoveries from both the EDA and the hypothesis test.
 * Target Variable: CAUSE.CATEGORY 
-    
-We measured and compared the performance of our classifcation models using the accuracy evalution metric.
+
+The performance of all classification models we designed are measured and compared using the accuracy evalution metric.
 
 ### Baseline Model
 For the baseline model, we chose ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] as our initial columns. Through the analysis we conducted in the EDA, we deemed these columns the most revelant to predict the cause of outages.  
 
 Overview of our Selected Dataset:
-* Year (ordinal)
-* Postal Code (nominal)
+* Year (ordinal): Certain causes are more prominent in certain years. For example, particularly in the year 2011, many of the outages can be attributed to the Southwest Blackout Event (more information the EDA description).
+* Postal Code (nominal): As seen in the univariate analysis, there is a strong relationship between particular states and number of outages. This suggests that causes could be predicted based on the most common cause of outages of a particular location.
 * Customers Affected (quantitative)
-* Poppct Urban or Population Percentage Urban (quantitative)
+* Poppct Urban or Population Percentage Urban (quantitative): As we observed from the hypothesis test, outages caused by severe weather are more prominent in rural communities as opposed to urban communities. Through this observation, we decided to include this data to train our model.
 
 Baseline Pipeline:
 - Preprocessed The Data: Simple Imputer and One Hot Encoder
@@ -84,7 +84,7 @@ Evalution Metrics:
 - Validation Accuracy: 0.721
 
 ### Engineer New Features
-We decided to engineer six more features to improve our model.Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage.
+We decided to engineer six more features to improve our model.Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage. Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage. In addition, the following features focus on providing further details regarding the duration or timing of the outage. Its importance can be seen through the observations from the bivariate analysis. 
 
 
 * Day of the week the outage occured (START.DAY.OF.WEEK)
