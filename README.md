@@ -50,7 +50,7 @@ Hypothesis for MAR Permutation Tests:
 After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at least one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
 
 ### Hypothesis Test
-From our EDA, we recognized that rural areas had a higher rate or outages related to weather compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters. 
+From our EDA, we recognized that rural areas had a higher rate or outages related to weather, compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters. 
 
 Our question: Are rural areas more prone to severe weather outages than urban areas? 
 
@@ -84,8 +84,7 @@ Evalution Metrics:
 - Validation Accuracy: 0.721
 
 ### Engineer New Features
-We decided to engineer six more features to improve our model.Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage. Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage. In addition, the following features focus on providing further details regarding the duration or timing of the outage. Its importance can be seen through the observations from the bivariate analysis. 
-
+Through the analysis we conducted in the EDA, we choose to derive and engineer six more features to further improve the accuracy of the model in predicting the cause category of a given outage. In addition, the following features focus on providing further details regarding the duration or timing of the outage. Its importance can be seen through the observations from the bivariate analysis. 
 
 * Day of the week the outage occured (START.DAY.OF.WEEK)
 * Day of the week the outage Was restored (RESTORATION.DAY.OF.WEEK)
