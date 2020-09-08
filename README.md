@@ -5,6 +5,9 @@ The 'outage.xlsx' dataset represents inputs about major outages in different sta
 
 We divided the project into two sections: Hypothesis Test and Prediction Model
 
+Below we will be providing a summary of what we accomplished in the different sections of this notebook.
+
+### EDA
 In this project, we performed exploratory data analysis in order to develop a hypothesis to test and decide on the metrics to train our prediction model.
 
 We narrowed down what we were exploring to a few possible questions and inquiries. These include:
@@ -13,9 +16,6 @@ We narrowed down what we were exploring to a few possible questions and inquirie
 - What characteristics are associated with each category of cause?
 - How have characteristics of major power outages changed over time? Is there a clear trend?
 
-Below we will be providing a summary of what we accomplished in the different sections of this notebook.
-
-### EDA
 In the EDA, guided the above questions, we focused on analyzing the relationship between specific features in our dataset. More specifically, we performed univariate, bivariate, and aggregation analysis.
 
 #### Univariate 
