@@ -84,7 +84,8 @@ Evalution Metrics:
 - Validation Accuracy: 0.721
 
 ### Engineer New Features
-We decided to engineer six more features to improve our model. 
+We decided to engineer six more features to improve our model.Through the analysis we conducted in the EDA, we choose to derive and engineer these features to further improve the accuracy of the model in predicting the cause category of a given outage.
+
 
 * Day of the week the outage occured (START.DAY.OF.WEEK)
 * Day of the week the outage Was restored (RESTORATION.DAY.OF.WEEK)
@@ -115,3 +116,23 @@ After engineering the features, we decided to compare various classifiers which 
   - Validation Accuracy: 0.7399
 
 From the given evaluation metrics, the Random Forest Classifier seems to be performing slightly better than the previous Decision Tree Classifier.
+
+### Final Model
+Our final model is trained on the data from ['YEAR', 'POSTAL.CODE', 'CUSTOMERS.AFFECTED', 'POPPCT_URBAN'] columns within the original dataset, along with our six engineered features stated above. 
+
+Within the preprocessing pipeline, we used a simple imputer to account for the missing data within the columns, a one hot encoder to quantify the categorical data, and a principal component analysis to handle highly correlated columns. Finally, we used the random forest classifier as our classification model.
+
+After optimizing the parameters for the random forest classifier through Grid Search, the accuracy metrics are as follows:
+- test_accuracy: 0.787
+- validation_accuracy: 0.753
+
+The accuracy increased 6 percent and the validation accuracy has increased by 3 percent  from our initial baseline model.
+
+### Fairness Evaluation
+For the fairness evaluation, we chose to evaluate whether the model performed better when a larger group of customers was affected. We chose to do an accuracy parity evaluation since we had a multiclass classification model and found that accuracy was one of the easier ways to evaluate model fairness.
+
+In order to perform this evaluation we performed a permutation test, at a significance level of 0.05, with these hypotheses:
+Null hypothesis: The classifications of major power outages are "the same" when a small and large number of people are affected.
+Alternative hypothesis: The classifications of major power outages are NOT "the same" when a small and large number of people are affected.
+
+Since we got a p-value of 1.0, we can strongly fail to reject the null hypothesis. Therefore, the classifications of major power outages are "the same" when both small and large number of people are affected.
