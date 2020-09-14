@@ -42,12 +42,15 @@ More fun visualizations we generated while investigating our questions are inclu
 ## Section 1: Hypothesis Test
 
 ### Assessment of Missingness
-Hypothesis for MAR Permutation Tests:
+
+In order to further understand our dataset and practice more data science skills, we decided to conduct an assessment of missingness. For this section, we decided to choose a particular non-trival column (column with a significant number of missing values) and run a Missing at Random Permutation Test. MAR data incidates that there is a relationship between the missingness of the data and another observed data.
 
 * Null hypothesis: The missingness of "OUTAGE.DURATION" is not dependent on the compared column data.
 * Alt hypothesis: The missingness of "OUTAGE.DURATION" is dependent on the the compared column data.
 
-After conducting permutation tests on all columns within the dataset, we believe that our data is not NMAR (not missing at random) because all non trivial missingness columns have at least one simulation that returned a p value less than 0.05, thus rejecting the null hypothesis.
+The column with nontrivial missingness data that we chose to analyze was 'OUTAGE.DURATION'. This column has 1476 non-null values out of the 1534 possible data entries. In order to determine 'OUTAGE.DURATION''s dependency of missingness, we conducted a KS-Statistic permutation test. The KS test is used to identify whether the two distributions are from the same continuous distribution. Using the KS statistic test, we were able to create two samples of data (one which contains the distribution of a column where OUTAGE.DURATION is null and the other which contains the distribution of a column where OUTAGE.DURATION is not null). After generating multiple sample through the 1000 simulations, we compared to our observed statistic which was the ks_2samp of our initial two independent samples. 
+
+We used this permutation test, at a significance level of 0.05, to identify two columns within our dataset: one that OUTAGE.DURATION's missigness was dependent on (MAR) and one that OUTAGE.DURATION's missingness was not dependent on. The results of the permutation test showed that 'TOTAL.SALES' was able to reject null hypothesis with a p value of 0.0 and 'CUSTOMERS.AFFECTED' failed to reject the null hypothesis with a p value of 0.28. Rejecting the null hypothesis indicates that the distribution are not similar. Failing to reject the null hypothesis indicates that the distribution is similar. This result does make sense as there are many factors other than outage duration that will affect the missingness of customers affected. However, outage duration can directly affects the total sales which indicates total electricity consumption in the U.S. state.
 
 ### Hypothesis Test
 From our EDA, we recognized that rural areas had a higher rate or outages related to weather, compared to urban areas. This may be due to reasons such as rural areas having less facilities to protect their power plants from large weather disasters. 
